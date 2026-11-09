@@ -196,19 +196,51 @@ countries = [
   'Zimbabwe'
 ]
 
-land_countries = []
-
-for country in countries:
-    if 'land' in country:
-        land_countries.append(country)
-
+uppercase_countries = list(map(str.upper, countries))
+print(uppercase_countries)
+land_countries = list(filter(lambda country: 'land' in country, countries))
 print(land_countries)
+six_characters = list(filter(lambda country: len(country) == 6, countries))
+print(six_characters)
+e_countries = list(filter(lambda country: country.startswith('E'), countries))
+print(e_countries)
 
-istan_countries = []
 
-for country in countries:
-    if "istan" in country:
-        istan_countries.append(country)
+def get_last_10_countries(countries):
+  return countries[-10:]
+last_10 = get_last_10_countries(countries)
+print(last_10)
 
-print(istan_countries)
+def get_first_10_countries(countries):
+  return countries[:10]
+first_10 = get_first_10_countries(countries)
+print(countries)
+
+def count_countries_by_first_letter(countries):
+  letter_counts = {}
+  for country in countries:
+    first_letter = country[0].upper()
+
+    if first_letter in letter_counts:
+      letter_counts[first_letter] += 1
+    else:
+      letter_counts[first_letter] = 1
+
+  return letter_counts
+result = count_countries_by_first_letter(countries)
+print(result)
+
+def categorize_countries(countries):
+  categories ={
+    'land': [],
+    'stan': [],
+    'ia': []
+  }
+  for country in countries:
+    for ending in categories:
+      if country.lower().endswith(ending):
+        categories[ending].append(country)
+  return categories
+categories = categorize_countries(countries)
+print(categories)
 
