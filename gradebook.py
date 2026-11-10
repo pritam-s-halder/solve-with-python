@@ -4,12 +4,13 @@ student = {}
 
 
 def add_student(name, roll_no):
+    name = name.lower()
     student[name] = roll_no
     print(f"{name} : {roll_no}")
 
 
 def search_student(name):
-    roll_no = student.get(name)
+    roll_no = student.get(name.lower())
 
     if roll_no:
         print(f"{name} : {roll_no}")
