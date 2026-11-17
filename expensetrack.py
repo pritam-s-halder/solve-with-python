@@ -1,11 +1,15 @@
+from datetime import date
 expenses = []
 
 def add_expenses():
     category = input("Enter expense category: ").strip()
+    description = input("Enter description: ").strip()
     amount = float(input("Enter amount: "))
 
     expense = {
+        "date": date.today().isoformat(),
         "category": category,
+        "description": description,
         "amount": amount
     }
     expenses.append(expense)
@@ -17,7 +21,10 @@ def view_expenses():
         return
     print("\nAll Expenses")
     for index, expense in enumerate(expenses, start=1):
-        print(f"{index}. {expense['category']}: ₹{expense['amount']:.2f}")
+        print(
+            f"{index}. [{expense['date']}] {expense['category']} - "
+            f"{expense['description']}: ₹{expense['amount']:.2f}"
+        )
 
 def view_total():
     total = sum(expense["amount"] for expense in expenses)
