@@ -1,9 +1,10 @@
 #contact management system
 
 phonebook = {}
-def add_contact(name, number):
+def add_contact(name, number, email):
     phonebook[name] = number
-    print(f"{name} and {number} are added.")
+    phonebook[name] = email
+    print(f"{name}, {number}  and {email} are added.")
 
 def search_contact(name):
     number = phonebook.get(name.lower())
@@ -12,10 +13,10 @@ def search_contact(name):
     else:
         print(f"{name} not found.")
 
-def update_contact(name, number):
+def update_contact(name, email):
     if name in phonebook:
-        phonebook[name] = number
-        print(f"{name} and {number} are updated.")
+        phonebook[name] = email
+        print(f"{name} and {email} are updated.")
     else:
         print(f"{name} does not exist.")
 
@@ -27,8 +28,8 @@ def delete_contact(name):
         print(f"{name} is not exist.")
 
 def show_contacts():
-    for name, number in phonebook.items():
-        print(f"{name}: {number}")
+    for name, email in phonebook.items():
+        print(f"{name}: {email}")
 
 def main():
     while True:
@@ -45,14 +46,15 @@ def main():
         if choice == "1":
             name = input("Enter contact name: ")
             number = input("Enter contact number: ")
-            add_contact(name, number)
+            email = input("Enter contact email ID: ")
+            add_contact(name, number, email)
         elif choice == "2":
             name = input("Enter contact name: ")
             search_contact(name)
         elif choice == "3":
             name = input("Enter contact name: ")
-            number = input("Enter contact number: ")
-            update_contact(name, number)
+            email = input("Enter contact email: ")
+            update_contact(name, email)
         elif choice == "4":
             name = input("Enter contact to be deleted: ")
             delete_contact(name)
