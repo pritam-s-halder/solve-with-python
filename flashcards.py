@@ -1,3 +1,4 @@
+import random
 flashcards = {}
 
 def add_flashcard(question, answer):
@@ -33,15 +34,31 @@ def show_flashcards():
         for question, answer in flashcards.items():
             print(f"{question} : {answer}")
 
+def quiz():
+    if not flashcards:
+        print("no flashcard found")
+        return
+    question = random.choice(list(flashcards.keys()))
+    answer = flashcards[question]
+
+    print("\nQuestions:", question)
+    user_answer = input("enter your answer:")
+    if user_answer.strip().lower() == answer.strip().lower():
+        print("correct answer!")
+    else:
+        print("incorrect. correct answer:", answer)
+
+
 def main():
     while True:
         print("\n======Flashcard Generator======")
-        print("1. Add flashcard.")
-        print("2. Search flashcard.")
-        print("3. Update flashcard.")
-        print("4. Delete flashcard.")
-        print("5. Show flashcard.")
-        print("6. Exit")
+        print("1. Add flashcard")
+        print("2. Search flashcard")
+        print("3. Update flashcard")
+        print("4. Delete flashcard")
+        print("5. Show flashcard")
+        print("6. Quiz")
+        print("7. Exit")
 
         try:
             choice = int(input("enter your choice: "))
@@ -66,10 +83,12 @@ def main():
         elif choice == 5:
             show_flashcards()
         elif choice == 6:
+            quiz()
+        elif choice == 7:
             print("Closing the program....")
             break
         else:
-            print("enter a valid choice from 1-6.")
+            print("enter a valid choice from 1-7.")
 
 if __name__ == "__main__":
     main()
