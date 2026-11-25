@@ -1,25 +1,32 @@
-#inheritance
-class Car:
-    def __init__(self, type):
-        self.type = type
+class Complex:
+    def __init__(self, real, img):
+        self.real = real
+        self.img = img
 
-    @staticmethod
-    def start():
-        print("car started..")
+    def showNumber(self):
+        print(self.real, "i +", self.img,"j")
 
-    @staticmethod
-    def stop(self):
-        print("car stopped..")
+    def __add__(self, num2):
+        newREAL = self.real + num2.real
+        newIMG = self.img + num2.img
+        return Complex(newREAL, newIMG)
 
-class ToyotaCar(Car):
-    def __init__(self, name, type):
-        super().__init__(type)
-        self.name = name
-        super().start()
+    def __sub__(self, num2):
+        newREAL = self.real - num2.real
+        newIMG = self.img - num2.img
+        return Complex(newREAL, newIMG)
 
-car1 = ToyotaCar("Toyota", "Prius")
-print(car1.name)
-print(car1.type)
+num1 = Complex(1, 3)
+num1.showNumber()
 
+num2 = Complex(2, 4)
+num2.showNumber()
 
+#num3 = num1.add(num2)
+#print(num3.showNumber())
 
+num3 = num1 + num2
+print(num3.showNumber())
+
+num4 = num3 - num2
+print(num4.showNumber())
