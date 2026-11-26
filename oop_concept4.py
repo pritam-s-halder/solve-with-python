@@ -1,13 +1,15 @@
-class Circle:
-    def __init__(self, radius):
-        self.radius = radius
+class Comet:
+    def __init__(self, name, current_year, next_year, period):
+        self.name = name
+        self.current_year = current_year
+        self.next_year = next_year
+        self.period = period
 
-    def area(self):
-        return self.radius ** 2 * (22/7)
+    def show_Info(self):
+        print("comet: ", self.name)
+        print("current_year: ", self.current_year)
+        print("next_year: ", self.next_year)
+        print("average period: ", self.period)
 
-    def perimeter(self):
-        return 2 * (22/7) * self.radius
-
-c1 = Circle(21)
-print(c1.area())
-print(c1.perimeter())
+c1 = Comet("Halley", 1986, 2061, 76)
+c1.show_Info()
